@@ -4,8 +4,11 @@ import { Routes, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
 import Error from "./Error";
-
+import UserDetail from "./UserDetail";
+import { useState } from "react";
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
   return (
     <div className="App">
       <nav className="navbar">
@@ -18,7 +21,10 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
+        {isLoggedIn ? <Route path="about" element={<About />} /> : ""}
+
+        <Route path="/user/:id" element={<UserDetail />}></Route>
+
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </div>
