@@ -5,7 +5,9 @@ function Error() {
   return (
     <div>
       <h1>404 Page not found</h1>
-      <Link to="/">Home</Link>
+      <Link to="/" state={{ from: "I just came from the error page" }}>
+        Home
+      </Link>
     </div>
   );
 }
