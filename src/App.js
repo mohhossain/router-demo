@@ -1,10 +1,8 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
 import Error from "./Error";
-import UserDetail from "./UserDetail";
 
 function App() {
   let greeting = "Welcome to the homepage!";
@@ -18,12 +16,8 @@ function App() {
           About
         </Link>
       </nav>
-      <Routes>
-        <Route path="/" element={<Home greeting={greeting} />} />
-        <Route path="about" element={<About />} />
-        <Route path="*" element={<Error />}></Route>
-        <Route path="/user/:id" element={<UserDetail></UserDetail>}></Route>
-      </Routes>
+
+      <Home></Home>
     </div>
   );
 }

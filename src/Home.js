@@ -1,14 +1,6 @@
 import { React, useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function Home({ greeting }) {
-  const location = useLocation();
-  const state = location.state;
-
-  const navigate = useNavigate();
-
-  console.log(state);
-
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -31,23 +23,22 @@ function Home({ greeting }) {
     <>
       <main>
         <h2>{greeting}</h2>
-        <p>You can do this, I believe in you.</p>
-        <p>{state ? state.from : "I did not come from the error page"}</p>
 
-        {users.map((user) => {
-          return (
-            <img
-              onClick={() => {
-                console.log(user);
-                navigate(`/user/${user.id}`, { state: { user } });
-              }}
-              key={user.id}
-              style={imageStyle}
-              height="200px"
-              src={user.image}
-            ></img>
-          );
-        })}
+        <div style={{ display: "flex" }}>
+          {users.map((user) => {
+            return (
+              <div>
+                <img
+                  key={user.id}
+                  style={imageStyle}
+                  height="200px"
+                  src={user.image}
+                ></img>
+                <h3>{user.name}</h3>
+              </div>
+            );
+          })}
+        </div>
       </main>
     </>
   );
